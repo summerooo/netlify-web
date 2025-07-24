@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>安全溯源中心</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+    <div class="nav-container">
+        <nav>
+            <a href="index.html"><i class="fas fa-home"></i> 首页</a>
+            <a href="menu.html"><i class="fas fa-utensils"></i> 菜单</a>
+            <a href="traceability.html" class="active"><i class="fas fa-search-location"></i> 溯源</a>
+            <a href="account.html"><i class="fas fa-user"></i> 账户</a>
+        </nav>
+    </div>
+</header>
+    <section id="trace-input">
+        <input type="text" placeholder="输入溯源码或扫码">
+        <button>查询</button>
+    </section>
+    <section id="report">
+        <div class="data-card">
+            <h2><i class="fas fa-file-pdf"></i> 检测报告</h2>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 100%; background: #2b8a3e;">
+                    <span>检测完成度 100%</span>
+                </div>
+            </div>
+            <button class="download-btn">
+                <i class="fas fa-download"></i>
+                下载最新报告（2023.Q4）
+            </button>
+        </div>
+    </section>
+    <section id="map">
+        <h2>供应商地图</h2>
+        <div class="interactive-map">
+            <div class="map-marker" style="left: 30%; top: 40%" data-name="崇明基地">
+                <i class="fas fa-map-marker-alt pulse"></i>
+                <div class="map-tooltip">胡萝卜供应基地</div>
+            </div>
+            <img src="map-base.png" alt="供应商分布图" class="map-image">
+        </div>
+    </section>
+    <section id="daily-results">
+        <h2>每日农残/兽残快检结果</h2>
+        <a href="results.csv">下载列表</a>
+    </section>
+    <section id="insurance">
+        <h2>食安保险</h2>
+        <p>保单号: XXX, 承保公司: YYY</p>
+    </section>
+    <script src="script.js"></script>
+</body>
+</html>
