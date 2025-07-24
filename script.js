@@ -59,17 +59,55 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(el);
     });
 
-    // Simple carousel example
-    const slides = document.querySelectorAll('.slide');
-    if (slides.length > 0) {
-        let currentSlide = 0;
-        slides[currentSlide].style.display = 'block';
-        const nextSlide = () => {
-            slides[currentSlide].style.display = 'none';
-            currentSlide = (currentSlide + 1) % slides.length;
-            slides[currentSlide].style.display = 'block';
-        };
-        setInterval(nextSlide, 3000);
+    // Carousel functionality for index.html
+    const carouselSlides = document.querySelectorAll('.carousel-slide');
+    const carouselPrevBtn = document.querySelector('.carousel-prev');
+    const carouselNextBtn = document.querySelector('.carousel-next');
+    let currentCarouselSlide = 0;
+    let carouselInterval;
+
+    function showCarouselSlide(index) {
+        carouselSlides.forEach((slide, i) => {
+            slide.style.display = 'none';
+            if (i === index) {
+                slide.style.display = 'block';
+            }
+        });
+    }
+
+    function nextCarouselSlide() {
+        currentCarouselSlide = (currentCarouselSlide + 1) % carouselSlides.length;
+        showCarouselSlide(currentCarouselSlide);
+    }
+
+    function prevCarouselSlide() {
+        currentCarouselSlide = (currentCarouselSlide - 1 + carouselSlides.length) % carouselSlides.length;
+        showCarouselSlide(currentCarouselSlide);
+    }
+
+    function startCarousel() {
+        carouselInterval = setInterval(nextCarouselSlide, 5000); // Auto-advance every 5 seconds
+    }
+
+    function stopCarousel() {
+        clearInterval(carouselInterval);
+    }
+
+    if (carouselSlides.length > 0) {
+        showCarouselSlide(currentCarouselSlide);
+        startCarousel();
+
+        carouselPrevBtn.addEventListener('click', () => {
+            stopCarousel();
+            prevCarouselSlide();
+            startCarousel();
+        });
+
+        carouselNextBtn.addEventListener('click', () => {
+            stopCarousel();
+            nextCarouselSlide();
+            startCarousel();
+        });
     }
 
     // Add hover effects or other interactions
